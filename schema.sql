@@ -18,6 +18,18 @@ create procedure create_category(_name varchar(100), _description varchar(250))
         insert into category(name, description) values(_name, _description);
     end;
 
+DROP PROCEDURE IF EXISTS create_category;
+
+CREATE PROCEDURE create_category(
+    IN _name VARCHAR(100),
+    IN _description VARCHAR(250),
+    OUT _id INT
+)
+BEGIN
+    INSERT INTO category(name, description) VALUES(_name, _description);
+    SET _id = LAST_INSERT_ID();
+END;
+
 create procedure delete_category(_id_category int)
     begin
         delete from category where id_category = _id_category;
@@ -40,6 +52,8 @@ create procedure select_all()
 
 call create_category('Cómputo', 'Art. de cómputo');
 
+select * from category;
+
 create table event(
     id_event int not null auto_increment primary key,
     description varchar(100) not null,
@@ -48,3 +62,6 @@ create table event(
     id_category int,
     foreign key (id_category) references category(id_category)
 );
+
+TRUNCATE TABLE event;
+ALTER TABLE category AUTO_INCREMENT = 1;
