@@ -11,11 +11,10 @@ import javax.swing.SwingUtilities;
 import java.sql.SQLException;
 
 public class Main {
-	public static void main(String[] args) throws SQLException {
-		
-		final String driver = "mysql";
+	public static void main(String[] args) throws SQLException, UnsupportedOperationException {
+		final String driver = "postgresql";
 		final String host = "localhost";
-		final int port = 3306;
+		final int port = 5432;
 		final String databaseName = "categories_db";
 		final String user = "diego";
 		final String password = "1234";

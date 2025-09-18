@@ -1,6 +1,6 @@
 package org.damm.domain.dao.impl;
 
-import org.damm.domain.dao.DatabaseDao;
+import org.damm.domain.dao.database.DatabaseDao;
 import org.damm.domain.pojo.Category;
 
 import java.sql.CallableStatement;
@@ -12,13 +12,19 @@ import java.util.List;
 
 public class CategoryDao extends DatabaseDao<Category, Integer> {
 	
-	private static final String SQL_INSERT = "call create_category(?, ?, ?)";
+	/*private static final String SQL_INSERT = "call create_category(?, ?, ?)";
 	private static final String SQL_SELECT = "call select_one(?)";
 	private static final String SQL_DELETE = "call delete_category(?)";
 	private static final String SQL_UPDATE = "call update_category(?, ?, ?)";
-	private static final String SQL_SELECT_ALL = "call select_all()";
+	private static final String SQL_SELECT_ALL = "call select_all()";*/
 	
-	public CategoryDao(String driver, String host, int port, String databaseName, String user, String password) throws SQLException {
+	private static final String SQL_INSERT = "call create_category(?, ?, ?)";
+	private static final String SQL_SELECT = "select * from select_one(?)";
+	private static final String SQL_DELETE = "call delete_category(?)";
+	private static final String SQL_UPDATE = "call update_category(?, ?, ?)";
+	private static final String SQL_SELECT_ALL = "select * from select_all()";
+	
+	public CategoryDao(String driver, String host, int port, String databaseName, String user, String password) {
 		super(driver, host, port, databaseName, user, password);
 	}
 	

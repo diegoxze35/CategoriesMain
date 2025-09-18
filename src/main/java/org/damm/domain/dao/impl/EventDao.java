@@ -1,6 +1,6 @@
 package org.damm.domain.dao.impl;
 
-import org.damm.domain.dao.DatabaseDao;
+import org.damm.domain.dao.database.DatabaseDao;
 import org.damm.domain.pojo.Category;
 import org.damm.domain.pojo.Event;
 
@@ -12,10 +12,13 @@ import java.util.List;
 
 public class EventDao extends DatabaseDao<Event, Integer> {
 	
-	private static final String SQL_SELECT_ALL = "select * from event inner join category on event.id_category = category.id_category";
+	private static final String SQL_SELECT_ALL = "select category.id_category as id_category, " +
+			"category.name as category_name, category.description as category_description," +
+			" event.id_event as id_event, event.name as event_name, event.description as event_description," +
+			" event.date_event as date_event from event inner join category on event.id_category = category.id_category";
 	private static final String SQL_SELECT = "select * from event inner join category " +
 			"on event.id_category = category.id_category where event.id_event = ?";
-	private static final String SQL_INSERT_UPDATE = "call save_event(?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_INSERT_UPDATE = "select * from save_event(?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_DELETE = "delete from event where id_event = ?";
 	
 	public EventDao(String driver, String host, int port, String databaseName, String user, String password) throws SQLException {
@@ -25,13 +28,13 @@ public class EventDao extends DatabaseDao<Event, Integer> {
 	private static Event mapResultSetToEvent(ResultSet resultSet) throws SQLException {
 		return new Event(
 				resultSet.getInt("id_event"),
-				resultSet.getString("event.description"),
+				resultSet.getString("event_description"),
 				resultSet.getDate("date_event"),
-				resultSet.getString("event.name"),
+				resultSet.getString("event_name"),
 				new Category(
-						resultSet.getInt("category.id_category"),
-						resultSet.getString("category.name"),
-						resultSet.getString("category.description")
+						resultSet.getInt("id_category"),
+						resultSet.getString("category_name"),
+						resultSet.getString("category_description")
 				)
 		);
 	}
@@ -105,8 +108,8 @@ public class EventDao extends DatabaseDao<Event, Integer> {
 			statement.setString(7, entity.getName());
 			
 			// Ejecutar el stored procedure
+			System.out.println(statement);
 			boolean hasResults = statement.execute();
-			
 			// Procesar resultados si es un INSERT (nuevo evento)
 			if (entity.getIdEvent() == null && hasResults) {
 				try (ResultSet rs = statement.getResultSet()) {
