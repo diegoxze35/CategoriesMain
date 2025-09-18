@@ -14,14 +14,13 @@ public abstract class DatabaseDao<T, ID> implements Dao<T, ID> {
 	private final String user;
 	private final String password;
 	
-	public DatabaseDao(String driver, String host, int port, String databaseName, String user, String password) throws SQLException {
+	public DatabaseDao(String driver, String host, int port, String databaseName, String user, String password) {
 		this.driver = driver;
 		this.host = host;
 		this.port = port;
 		this.databaseName = databaseName;
 		this.user = user;
 		this.password = password;
-		connectToDatabase();
 	}
 	
 	private void connectToDatabase() throws SQLException {

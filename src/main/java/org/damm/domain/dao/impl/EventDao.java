@@ -1,5 +1,6 @@
-package org.damm.domain.dao;
+package org.damm.domain.dao.impl;
 
+import org.damm.domain.dao.DatabaseDao;
 import org.damm.domain.pojo.Category;
 import org.damm.domain.pojo.Event;
 
