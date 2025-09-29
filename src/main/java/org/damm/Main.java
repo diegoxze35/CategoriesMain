@@ -1,17 +1,15 @@
 package org.damm;
 
-import org.damm.domain.dao.Dao;
-import org.damm.domain.dao.impl.CategoryDao;
-import org.damm.domain.dao.impl.EventDao;
+import javax.swing.SwingUtilities;
+import org.damm.dao.Dao;
+import org.damm.dao.impl.CategoryDao;
+import org.damm.dao.impl.EventDao;
 import org.damm.domain.pojo.Category;
 import org.damm.domain.pojo.Event;
 import org.damm.ui.CrudUI;
 
-import javax.swing.SwingUtilities;
-import java.sql.SQLException;
-
 public class Main {
-	public static void main(String[] args) throws SQLException, UnsupportedOperationException {
+	public static void main(String[] args) {
 		final String driver = "postgresql";
 		final String host = "localhost";
 		final int port = 5432;

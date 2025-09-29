@@ -146,7 +146,7 @@ END;
 $$;
 
 select * from event inner join category on event.id_category = category.id_category;
-select * from save_event((NULL), ('1'::int4), ('Cat 1'), ('Desc 1'), ('Desv e 1'), ('2025-09-18 -06'), ('Evt 1'))
+select * from save_event((NULL), ('1'::int4), ('Cat 1'), ('Desc 1'), ('Desv e 1'), ('2025-09-18 -06'), ('Evt 1'));
 
 -- Reinicio de secuencias (equivalente a AUTO_INCREMENT)
 TRUNCATE TABLE event, category RESTART IDENTITY;

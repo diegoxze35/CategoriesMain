@@ -1,6 +1,6 @@
-package org.damm.domain.dao.impl;
+package org.damm.dao.impl;
 
-import org.damm.domain.dao.database.DatabaseDao;
+import org.damm.dao.database.DatabaseDao;
 import org.damm.domain.pojo.Category;
 import org.damm.domain.pojo.Event;
 
@@ -21,7 +21,7 @@ public class EventDao extends DatabaseDao<Event, Integer> {
 	private static final String SQL_INSERT_UPDATE = "select * from save_event(?, ?, ?, ?, ?, ?, ?)";
 	private static final String SQL_DELETE = "delete from event where id_event = ?";
 	
-	public EventDao(String driver, String host, int port, String databaseName, String user, String password) throws SQLException {
+	public EventDao(String driver, String host, int port, String databaseName, String user, String password) {
 		super(driver, host, port, databaseName, user, password);
 	}
 	

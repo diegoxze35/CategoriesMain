@@ -1,6 +1,6 @@
-package org.damm.domain.dao.impl;
+package org.damm.dao.impl;
 
-import org.damm.domain.dao.database.DatabaseDao;
+import org.damm.dao.database.DatabaseDao;
 import org.damm.domain.pojo.Category;
 
 import java.sql.CallableStatement;

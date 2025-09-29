@@ -1,4 +1,4 @@
-package org.damm.domain.dao;
+package org.damm.dao;
 
 import java.util.List;
 

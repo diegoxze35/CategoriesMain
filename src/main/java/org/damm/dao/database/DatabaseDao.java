@@ -1,6 +1,6 @@
-package org.damm.domain.dao.database;
+package org.damm.dao.database;
 
-import org.damm.domain.dao.Dao;
+import org.damm.dao.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
